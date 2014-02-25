@@ -12,70 +12,71 @@
 
     <LinearLayout
         android:id="@+id/passwordLayout"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center_vertical"
-        android:layout_height="0dp" >
+        android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/tv_pass1"
-            android:gravity="center"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/mistery"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:id="@+id/tv_pass2"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:gravity="center"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/mistery"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:id="@+id/tv_pass3"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:gravity="center"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/mistery"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:id="@+id/tv_pass4"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:gravity="center"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/mistery"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom" >
 
         <EditText
             android:id="@+id/editTextl11"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextl12"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" >
 
             <requestFocus />
@@ -83,81 +84,90 @@
 
         <EditText
             android:id="@+id/editTextl13"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextl14"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="20dp" >
+        android:layout_height="20dp"
+        android:gravity="top|center_horizontal"
+        android:visibility="invisible" >
 
         <ImageView
             android:id="@+id/img_statusl11"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_error" />
+
         <ImageView
             android:id="@+id/img_statusl12"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_error" />
+
         <ImageView
             android:id="@+id/img_statusl13"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"         
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_correct" />
-        <ImageView
-            android:id="@+id/img_statusl14"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
+            android:src="@drawable/icon_correct" />
+
+        <ImageView
+            android:id="@+id/img_statusl14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_full_correct" />
-
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom" >
 
         <EditText
             android:id="@+id/editTextl21"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:focusable="true"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
             android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextl22"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:editable="false"
-            android:gravity="center"
+            android:clickable="false"
             android:ems="10"
+            android:enabled="false"
+            android:gravity="center"
             android:inputType="number" >
 
             <requestFocus />
@@ -165,81 +175,96 @@
 
         <EditText
             android:id="@+id/editTextl23"
-            android:layout_height="wrap_content"
-            android:editable="false"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
             android:ems="10"
+            android:enabled="false"
+            android:gravity="center"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextl24"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="false"
             android:editable="false"
-            android:gravity="center"
             android:ems="10"
+            android:enabled="false"
+            android:gravity="center"
             android:inputType="number" />
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="20dp" >
+        android:layout_height="20dp"
+        android:gravity="top|center_horizontal"
+        android:visibility="invisible" >
 
         <ImageView
             android:id="@+id/img_statusl21"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_error" />
+
         <ImageView
             android:id="@+id/img_statusl22"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_error" />
+
         <ImageView
             android:id="@+id/img_statusl23"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"         
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_correct" />
-        <ImageView
-            android:id="@+id/img_statusl24"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
+            android:src="@drawable/icon_correct" />
+
+        <ImageView
+            android:id="@+id/img_statusl24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_full_correct" />
-
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom" >
 
         <EditText
             android:id="@+id/editTextl31"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextl32"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" >
 
             <requestFocus />
@@ -247,79 +272,96 @@
 
         <EditText
             android:id="@+id/editTextl33"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextl34"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="20dp" >
+        android:layout_height="20dp"
+        android:gravity="top|center_horizontal"
+        android:visibility="invisible" >
 
         <ImageView
             android:id="@+id/img_statusl31"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_error" />
+
         <ImageView
             android:id="@+id/img_statusl32"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_error" />
+
         <ImageView
             android:id="@+id/img_statusl33"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"         
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_correct" />
-        <ImageView
-            android:id="@+id/img_statusl34"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
+            android:src="@drawable/icon_correct" />
+
+        <ImageView
+            android:id="@+id/img_statusl34"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_full_correct" />
-
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom" >
 
         <EditText
             android:id="@+id/editTextl41"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextl42"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" >
 
             <requestFocus />
@@ -327,79 +369,96 @@
 
         <EditText
             android:id="@+id/editTextl43"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextl44"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="20dp" >
+        android:layout_height="20dp"
+        android:gravity="top|center_horizontal"
+        android:visibility="invisible" >
 
         <ImageView
             android:id="@+id/img_statusl41"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_error" />
+
         <ImageView
             android:id="@+id/img_statusl42"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_error" />
+
         <ImageView
             android:id="@+id/img_statusl43"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"         
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_correct" />
-        <ImageView
-            android:id="@+id/img_statusl44"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
+            android:src="@drawable/icon_correct" />
+
+        <ImageView
+            android:id="@+id/img_statusl44"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_full_correct" />
-
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom" >
 
         <EditText
             android:id="@+id/editTextl51"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextl52"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" >
 
             <requestFocus />
@@ -407,79 +466,96 @@
 
         <EditText
             android:id="@+id/editTextl53"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextl54"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="20dp" >
+        android:layout_height="20dp"
+        android:gravity="top|center_horizontal"
+        android:visibility="invisible" >
 
         <ImageView
             android:id="@+id/img_statusl51"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_error" />
+
         <ImageView
             android:id="@+id/img_statusl52"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_error" />
+
         <ImageView
             android:id="@+id/img_statusl53"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"         
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_correct" />
-        <ImageView
-            android:id="@+id/img_statusl54"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
+            android:src="@drawable/icon_correct" />
+
+        <ImageView
+            android:id="@+id/img_statusl54"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_full_correct" />
-
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom" >
 
         <EditText
             android:id="@+id/editTextl61"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextl62"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" >
 
             <requestFocus />
@@ -487,57 +563,66 @@
 
         <EditText
             android:id="@+id/editTextl63"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextl64"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:clickable="false"
+            android:editable="false"
+            android:enabled="false"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number" />
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="20dp" >
+        android:layout_height="20dp"
+        android:gravity="top|center_horizontal"
+        android:visibility="invisible" >
 
         <ImageView
             android:id="@+id/img_statusl61"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_error" />
+
         <ImageView
             android:id="@+id/img_statusl62"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_error" />
+
         <ImageView
             android:id="@+id/img_statusl63"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"         
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_correct" />
-        <ImageView
-            android:id="@+id/img_statusl64"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
+            android:src="@drawable/icon_correct" />
+
+        <ImageView
+            android:id="@+id/img_statusl64"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/icon_full_correct" />
-
     </LinearLayout>
+
 </LinearLayout>
