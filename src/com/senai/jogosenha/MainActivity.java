@@ -15,10 +15,11 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
-	// TODO Gerar senha com números únicos
 	// TODO Inserir status em posições aleatórias
-	// TODO Tratar última linha do jogo
 	// TODO Verificar ganhador
+	// TODO Exibir senha sorteada ao fim do jogo
+	// TODO Reiniciar jogo
+	// TODO Validar obrigatoriedade
 
 	private static final int STATUS_PARCIALMENTE_CORRETO 	= R.drawable.icone_parcialmente_correto;
 	private static final int STATUS_COMPLETAMENTE_CORRETO 	= R.drawable.icone_completamente_correto;
@@ -103,7 +104,6 @@ public class MainActivity extends Activity {
 		mostrarStatus(linha);
 	}
 	
-
 	public void gerarSenha() {
 		String[] lista = {"0","1","2","3","4","5","6","7","8","9"};
 		Vector<String> universo = new Vector<String>(Arrays.asList(lista));
@@ -112,7 +112,7 @@ public class MainActivity extends Activity {
 		int tamanho = 9;
 		for (int i = 0; i < 4; i++) {
 			Random random = new Random();
-			int indice = random.nextInt(tamanho - 0);
+			int indice = random.nextInt(tamanho);
 			String digito = universo.get(indice);
 			s += digito;
 			universo.remove(indice);
