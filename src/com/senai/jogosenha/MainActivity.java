@@ -1,16 +1,24 @@
 package com.senai.jogosenha;
 
+import java.util.Arrays;
 import java.util.Random;
+import java.util.Vector;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+	
+	// TODO Gerar senha com números únicos
+	// TODO Inserir status em posições aleatórias
+	// TODO Tratar última linha do jogo
+	// TODO Verificar ganhador
 
 	private static final int STATUS_PARCIALMENTE_CORRETO 	= R.drawable.icone_parcialmente_correto;
 	private static final int STATUS_COMPLETAMENTE_CORRETO 	= R.drawable.icone_completamente_correto;
@@ -25,14 +33,30 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
 		gerarSenha();
+	}
+
+	public void validarSenha(View view) {
 		mostrar(senha);
 		verificarStatus();
 		alterarStatus();
-
+		mudarStatusLinha(linha, false);
+		if (linha < 5) {
+			linha++;
+			mudarStatusLinha(linha, true);
+		}
 	}
-
+	
+	public void mudarStatusLinha(int linha, boolean status) {
+		for (int coluna = 0; coluna < 4; coluna++) {
+			int id = obterDigitoId(linha, coluna);
+			EditText campo = (EditText)findViewById(id);
+			campo.setClickable(status);
+			campo.setEnabled(status);
+			campo.setClickable(status);
+		}
+	}
+		
 	public void verificarStatus() {
 		capturarSenha(linha);
 
@@ -56,19 +80,43 @@ public class MainActivity extends Activity {
 	}
 
 	private void alterarStatus() {
-		for (int coluna = 0; coluna < 4; coluna++) {
-			inserirStatus(linha, coluna, status[coluna]);
+		Integer[] lista = {0,1,2,3};
+		Vector<Integer> posicoes = new Vector<Integer>(Arrays.asList(lista));
+		
+		int tamanho = 3;
+		for (int s = 0; s < 4; s++) {
+			Random random = new Random();
+			int indice;
+			
+			if (tamanho == 0) {
+				indice = 0;
+			} else {
+				indice = random.nextInt(tamanho);
+			}
+			
+			int coluna = posicoes.get(indice);
+			
+			inserirStatus(linha, coluna, status[s]);
+			posicoes.remove(indice);
+			tamanho--;
 		}
 		mostrarStatus(linha);
 	}
 	
 
 	public void gerarSenha() {
+		String[] lista = {"0","1","2","3","4","5","6","7","8","9"};
+		Vector<String> universo = new Vector<String>(Arrays.asList(lista));
+		
 		String s = "";
+		int tamanho = 9;
 		for (int i = 0; i < 4; i++) {
 			Random random = new Random();
-			int digito = random.nextInt(9 - 0);
-			s += String.valueOf(digito);
+			int indice = random.nextInt(tamanho - 0);
+			String digito = universo.get(indice);
+			s += digito;
+			universo.remove(indice);
+			tamanho--;
 		}
 		senha = s;
 	}
@@ -93,65 +141,121 @@ public class MainActivity extends Activity {
 	}
 	
 	public void inserirStatus(int linha, int coluna, int status) {
-		if (linha == 0 && coluna == 0) {((ImageView)findViewById(R.id.img_statusl00)).setImageResource(status);}
-		if (linha == 1 && coluna == 0) {((ImageView)findViewById(R.id.img_statusl10)).setImageResource(status);}
-		if (linha == 2 && coluna == 0) {((ImageView)findViewById(R.id.img_statusl20)).setImageResource(status);}
-		if (linha == 3 && coluna == 0) {((ImageView)findViewById(R.id.img_statusl30)).setImageResource(status);}
-		if (linha == 4 && coluna == 0) {((ImageView)findViewById(R.id.img_statusl30)).setImageResource(status);}
-		if (linha == 5 && coluna == 0) {((ImageView)findViewById(R.id.img_statusl40)).setImageResource(status);}
-		
-		if (linha == 0 && coluna == 1) {((ImageView)findViewById(R.id.img_statusl01)).setImageResource(status);}
-		if (linha == 1 && coluna == 1) {((ImageView)findViewById(R.id.img_statusl11)).setImageResource(status);}
-		if (linha == 2 && coluna == 1) {((ImageView)findViewById(R.id.img_statusl21)).setImageResource(status);}
-		if (linha == 3 && coluna == 1) {((ImageView)findViewById(R.id.img_statusl31)).setImageResource(status);}
-		if (linha == 4 && coluna == 1) {((ImageView)findViewById(R.id.img_statusl41)).setImageResource(status);}
-		if (linha == 5 && coluna == 1) {((ImageView)findViewById(R.id.img_statusl51)).setImageResource(status);}
-		
-		if (linha == 0 && coluna == 2) {((ImageView)findViewById(R.id.img_statusl02)).setImageResource(status);}
-		if (linha == 1 && coluna == 2) {((ImageView)findViewById(R.id.img_statusl12)).setImageResource(status);}
-		if (linha == 2 && coluna == 2) {((ImageView)findViewById(R.id.img_statusl22)).setImageResource(status);}
-		if (linha == 3 && coluna == 2) {((ImageView)findViewById(R.id.img_statusl32)).setImageResource(status);}
-		if (linha == 4 && coluna == 2) {((ImageView)findViewById(R.id.img_statusl42)).setImageResource(status);}
-		if (linha == 5 && coluna == 2) {((ImageView)findViewById(R.id.img_statusl52)).setImageResource(status);}
-		
-		if (linha == 0 && coluna == 3) {((ImageView)findViewById(R.id.img_statusl03)).setImageResource(status);}
-		if (linha == 1 && coluna == 3) {((ImageView)findViewById(R.id.img_statusl13)).setImageResource(status);}
-		if (linha == 2 && coluna == 3) {((ImageView)findViewById(R.id.img_statusl23)).setImageResource(status);}
-		if (linha == 3 && coluna == 3) {((ImageView)findViewById(R.id.img_statusl33)).setImageResource(status);}
-		if (linha == 4 && coluna == 3) {((ImageView)findViewById(R.id.img_statusl43)).setImageResource(status);}
-		if (linha == 5 && coluna == 3) {((ImageView)findViewById(R.id.img_statusl53)).setImageResource(status);}
+		int statusId = obterStatusId(linha, coluna);
+		ImageView img = (ImageView)findViewById(statusId);
+		img.setImageResource(status);
 	}
 	
 	public String capturarDigito(int linha, int coluna) {
-		String digito = "";
-		if (linha == 0 && coluna == 0) {digito = ((EditText)findViewById(R.id.editTextl00)).getText().toString();}
-		if (linha == 1 && coluna == 0) {digito = ((EditText)findViewById(R.id.editTextl10)).getText().toString();}
-		if (linha == 2 && coluna == 0) {digito = ((EditText)findViewById(R.id.editTextl20)).getText().toString();}
-		if (linha == 3 && coluna == 0) {digito = ((EditText)findViewById(R.id.editTextl30)).getText().toString();}
-		if (linha == 4 && coluna == 0) {digito = ((EditText)findViewById(R.id.editTextl40)).getText().toString();}
-		if (linha == 5 && coluna == 0) {digito = ((EditText)findViewById(R.id.editTextl50)).getText().toString();}
-		
-		if (linha == 0 && coluna == 1) {digito = ((EditText)findViewById(R.id.editTextl01)).getText().toString();}
-		if (linha == 1 && coluna == 1) {digito = ((EditText)findViewById(R.id.editTextl11)).getText().toString();}
-		if (linha == 2 && coluna == 1) {digito = ((EditText)findViewById(R.id.editTextl21)).getText().toString();}
-		if (linha == 3 && coluna == 1) {digito = ((EditText)findViewById(R.id.editTextl31)).getText().toString();}
-		if (linha == 4 && coluna == 1) {digito = ((EditText)findViewById(R.id.editTextl41)).getText().toString();}
-		if (linha == 5 && coluna == 1) {digito = ((EditText)findViewById(R.id.editTextl51)).getText().toString();}
-		
-		if (linha == 0 && coluna == 2) {digito = ((EditText)findViewById(R.id.editTextl02)).getText().toString();}
-		if (linha == 1 && coluna == 2) {digito = ((EditText)findViewById(R.id.editTextl12)).getText().toString();}
-		if (linha == 2 && coluna == 2) {digito = ((EditText)findViewById(R.id.editTextl22)).getText().toString();}
-		if (linha == 3 && coluna == 2) {digito = ((EditText)findViewById(R.id.editTextl32)).getText().toString();}
-		if (linha == 4 && coluna == 2) {digito = ((EditText)findViewById(R.id.editTextl42)).getText().toString();}
-		if (linha == 5 && coluna == 2) {digito = ((EditText)findViewById(R.id.editTextl52)).getText().toString();}
-		
-		if (linha == 0 && coluna == 3) {digito = ((EditText)findViewById(R.id.editTextl03)).getText().toString();}
-		if (linha == 1 && coluna == 3) {digito = ((EditText)findViewById(R.id.editTextl13)).getText().toString();}
-		if (linha == 2 && coluna == 3) {digito = ((EditText)findViewById(R.id.editTextl23)).getText().toString();}
-		if (linha == 3 && coluna == 3) {digito = ((EditText)findViewById(R.id.editTextl33)).getText().toString();}
-		if (linha == 4 && coluna == 3) {digito = ((EditText)findViewById(R.id.editTextl43)).getText().toString();}
-		if (linha == 5 && coluna == 3) {digito = ((EditText)findViewById(R.id.editTextl53)).getText().toString();}
+		int digitoId = obterDigitoId(linha, coluna);
+		String digito = ((EditText) findViewById(digitoId)).getText().toString();
 		return digito;
+	}
+	
+	public int obterDigitoId(int linha, int coluna) {
+		if (linha == 0) {
+			switch (coluna) {
+			case 0: return R.id.editTextl00;
+			case 1: return R.id.editTextl01;
+			case 2: return R.id.editTextl02;
+			case 3: return R.id.editTextl03;
+			}
+		}
+		
+		if (linha == 1) {
+			switch (coluna) {
+			case 0: return R.id.editTextl10;
+			case 1: return R.id.editTextl11;
+			case 2: return R.id.editTextl12;
+			case 3: return R.id.editTextl13;			
+			}
+		}
+		if (linha == 2) {
+			switch (coluna) {
+			case 0: return R.id.editTextl20;
+			case 1: return R.id.editTextl21;
+			case 2: return R.id.editTextl22;
+			case 3: return R.id.editTextl23;
+			}
+		}
+		if (linha == 3) {
+			switch (coluna) {
+			case 0: return R.id.editTextl30;
+			case 1: return R.id.editTextl31;
+			case 2: return R.id.editTextl32;
+			case 3: return R.id.editTextl33;
+			}
+		}
+		if (linha == 4) {
+			switch (coluna) {
+			case 0: return R.id.editTextl40;
+			case 1: return R.id.editTextl41;
+			case 2: return R.id.editTextl42;
+			case 3: return R.id.editTextl43;
+			}
+		}
+		if (linha == 5) {
+			switch (coluna) {
+			case 0: return R.id.editTextl50;
+			case 1: return R.id.editTextl51;
+			case 2: return R.id.editTextl52;
+			case 3: return R.id.editTextl53;
+			}
+		}
+		return 0;
+	}
+	
+	public int obterStatusId(int linha, int coluna) {
+		if (linha == 0) {
+			switch (coluna) {
+			case 0: return R.id.img_statusl00;
+			case 1: return R.id.img_statusl01;
+			case 2: return R.id.img_statusl02;
+			case 3: return R.id.img_statusl03;
+			}
+		}
+		
+		if (linha == 1) {
+			switch (coluna) {
+			case 0: return R.id.img_statusl10;
+			case 1: return R.id.img_statusl11;
+			case 2: return R.id.img_statusl12;
+			case 3: return R.id.img_statusl13;			
+			}
+		}
+		if (linha == 2) {
+			switch (coluna) {
+			case 0: return R.id.img_statusl20;
+			case 1: return R.id.img_statusl21;
+			case 2: return R.id.img_statusl22;
+			case 3: return R.id.img_statusl23;
+			}
+		}
+		if (linha == 3) {
+			switch (coluna) {
+			case 0: return R.id.img_statusl30;
+			case 1: return R.id.img_statusl31;
+			case 2: return R.id.img_statusl32;
+			case 3: return R.id.img_statusl33;
+			}
+		}
+		if (linha == 4) {
+			switch (coluna) {
+			case 0: return R.id.img_statusl40;
+			case 1: return R.id.img_statusl41;
+			case 2: return R.id.img_statusl42;
+			case 3: return R.id.img_statusl43;
+			}
+		}
+		if (linha == 5) {
+			switch (coluna) {
+			case 0: return R.id.img_statusl50;
+			case 1: return R.id.img_statusl51;
+			case 2: return R.id.img_statusl52;
+			case 3: return R.id.img_statusl53;
+			}
+		}
+		return 0;
 	}
 	
 	@Override
