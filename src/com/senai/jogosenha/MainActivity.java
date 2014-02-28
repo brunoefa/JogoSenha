@@ -6,18 +6,18 @@ import java.util.Vector;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
 	// TODO Inserir status em posições aleatórias
-	// TODO Verificar ganhador
-	// TODO Exibir senha sorteada ao fim do jogo
 	// TODO Reiniciar jogo
 	// TODO Validar obrigatoriedade
 
@@ -42,9 +42,17 @@ public class MainActivity extends Activity {
 		verificarStatus();
 		alterarStatus();
 		mudarStatusLinha(linha, false);
-		if (linha < 5) {
-			linha++;
-			mudarStatusLinha(linha, true);
+		if (verificarResultado()) {
+			mostrarSenha();
+			mostrar("Você é demais");
+		}else {
+			if (linha < 5) {
+				linha++;
+				mudarStatusLinha(linha, true);
+			}else {
+				mostrarSenha();
+				mostrar("Tente outra vez");
+			}
 		}
 	}
 	
@@ -56,6 +64,31 @@ public class MainActivity extends Activity {
 			campo.setEnabled(status);
 			campo.setClickable(status);
 		}
+	}
+	
+	private boolean verificarResultado() {
+		for (int i = 0; i < 4; i++) {
+			if (status[i] != STATUS_COMPLETAMENTE_CORRETO) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private void mostrarSenha() {
+		char[] dig = senha.toCharArray();
+		TextView p0 =  (TextView)findViewById(R.id.tv_pass0);
+		p0.setText(String.valueOf(dig[0]));
+		
+		TextView p1 =  (TextView)findViewById(R.id.tv_pass1);
+		p1.setText(String.valueOf(dig[1]));
+		
+		TextView p2 =  (TextView)findViewById(R.id.tv_pass2);
+		p2.setText(String.valueOf(dig[2]));
+		
+		TextView p3 =  (TextView)findViewById(R.id.tv_pass3);
+		p3.setText(String.valueOf(dig[3]));
+		
 	}
 		
 	public void verificarStatus() {
@@ -76,30 +109,15 @@ public class MainActivity extends Activity {
 			if (digitoSenha.equals(digitoLinha)) {
 				status[coluna] = STATUS_COMPLETAMENTE_CORRETO;
 			}
-
+		}
+		for (int i = 0; i < 4; i++) {
+			Log.i("STATUS", "Status: " + status[i]);
 		}
 	}
 
 	private void alterarStatus() {
-		Integer[] lista = {0,1,2,3};
-		Vector<Integer> posicoes = new Vector<Integer>(Arrays.asList(lista));
-		
-		int tamanho = 3;
-		for (int s = 0; s < 4; s++) {
-			Random random = new Random();
-			int indice;
-			
-			if (tamanho == 0) {
-				indice = 0;
-			} else {
-				indice = random.nextInt(tamanho);
-			}
-			
-			int coluna = posicoes.get(indice);
-			
-			inserirStatus(linha, coluna, status[s]);
-			posicoes.remove(indice);
-			tamanho--;
+		for (int coluna = 0; coluna < 4; coluna++) {
+			inserirStatus(linha, coluna, status[coluna]);
 		}
 		mostrarStatus(linha);
 	}
