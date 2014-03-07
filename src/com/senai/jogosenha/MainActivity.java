@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void validarSenha(View view) {
-		mostrar(senha);
+//		mostrar(senha);
 		verificarStatus();
 		alterarStatus();
 		mudarStatusLinha(linha, false);
