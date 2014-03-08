@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Vector;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -15,10 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class JogoActivity extends Activity {
 	
 	// TODO Inserir status em posições aleatórias
-	// TODO Reiniciar jogo
 	// TODO Validar obrigatoriedade
 
 	private static final int STATUS_PARCIALMENTE_CORRETO 	= R.drawable.icone_parcialmente_correto;
@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
 	private static final int STATUS_ERRADO 					= R.drawable.icone_errado;
 	private int[] status = { 0, 0, 0, 0 };
 
+	private String email;
 	private String senha;
 	private Integer linha = 0;
 	private String[][] listaSenha = new String[6][4];
@@ -33,12 +34,15 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_jogo);
+		
+		Intent intent  = getIntent();
+		email = intent.getStringExtra("email");
+		mostrar(email);
 		gerarSenha();
 	}
 
 	public void validarSenha(View view) {
-//		mostrar(senha);
 		verificarStatus();
 		alterarStatus();
 		mudarStatusLinha(linha, false);
