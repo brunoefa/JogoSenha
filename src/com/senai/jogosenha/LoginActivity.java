@@ -18,7 +18,7 @@ public class LoginActivity extends Activity {
 		EditText campoLogin = (EditText)findViewById(R.id.et_login);
 		String email = campoLogin.getText().toString();
 		
-		Intent intent = new Intent(this, JogoActivity.class);
+		Intent intent = new Intent(this, RankingActivity.class);
 		intent.putExtra("email", email);
 		startActivity(intent);
 	}

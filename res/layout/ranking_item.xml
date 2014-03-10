@@ -6,7 +6,7 @@
     android:orientation="horizontal" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_posicao"
         android:layout_margin="5dp"
         android:layout_width="55dp"
         android:layout_height="55dp"
@@ -24,7 +24,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="brunoefa@gmail.com"
@@ -43,7 +43,7 @@
                 android:src="@drawable/vitorias" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tv_vitorias"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#b8b8b8"
@@ -59,7 +59,7 @@
                 android:src="@drawable/derrotas" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tv_derrotas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#b8b8b8"
