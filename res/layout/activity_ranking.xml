@@ -7,7 +7,7 @@
     tools:context=".RankingActivity" >
 
     <ListView
-        android:id="@+id/rankingListView"
+        android:id="@+id/lv_ranking"
         android:layout_width="match_parent"
         android:dividerHeight="1dp"
         android:layout_height="wrap_content" >
