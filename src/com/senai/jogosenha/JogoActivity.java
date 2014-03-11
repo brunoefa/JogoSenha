@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,11 +22,15 @@ public class JogoActivity extends Activity {
 	// TODO Inserir status em posições aleatórias
 	// TODO Validar obrigatoriedade
 
+	private static final boolean VITORIA = Boolean.TRUE;
+	private static final boolean DERROTA = Boolean.FALSE;
+	
 	private static final int STATUS_PARCIALMENTE_CORRETO 	= R.drawable.icone_parcialmente_correto;
 	private static final int STATUS_COMPLETAMENTE_CORRETO 	= R.drawable.icone_completamente_correto;
 	private static final int STATUS_ERRADO 					= R.drawable.icone_errado;
 	private int[] status = { 0, 0, 0, 0 };
 
+	private Boolean resultado = Boolean.FALSE;
 	private String email;
 	private String senha;
 	private Integer linha = 0;
@@ -38,7 +43,6 @@ public class JogoActivity extends Activity {
 		
 		Intent intent  = getIntent();
 		email = intent.getStringExtra("email");
-		mostrar(email);
 		gerarSenha();
 	}
 
@@ -47,15 +51,15 @@ public class JogoActivity extends Activity {
 		alterarStatus();
 		mudarStatusLinha(linha, false);
 		if (verificarResultado()) {
-			mostrarSenha();
-			mostrar("Você é demais");
+			resultado = VITORIA;
+			exibiResultado();
 		}else {
 			if (linha < 5) {
 				linha++;
 				mudarStatusLinha(linha, true);
 			}else {
-				mostrarSenha();
-				mostrar("Tente outra vez");
+				resultado = DERROTA;
+				exibiResultado();
 			}
 		}
 	}
@@ -79,7 +83,22 @@ public class JogoActivity extends Activity {
 		return true;
 	}
 	
-	private void mostrarSenha() {
+	private void exibiResultado() {
+		revelarSenha();
+		Button botaoSenha = (Button)findViewById(R.id.btn_senha);
+		Button botaoRanking = (Button)findViewById(R.id.btn_ranking);
+		botaoSenha.setVisibility(Button.GONE);
+		botaoRanking.setVisibility(Button.VISIBLE);
+
+		if (resultado) {
+			mostrarMensagem("Você é demais");
+		}else {
+			mostrarMensagem("Tente outra vez");
+		}
+		mostrarMensagem("Click em \"Ranking\" para continuar");
+	}
+	
+	private void revelarSenha() {
 		char[] dig = senha.toCharArray();
 		TextView p0 =  (TextView)findViewById(R.id.tv_pass0);
 		p0.setText(String.valueOf(dig[0]));
@@ -92,7 +111,13 @@ public class JogoActivity extends Activity {
 		
 		TextView p3 =  (TextView)findViewById(R.id.tv_pass3);
 		p3.setText(String.valueOf(dig[3]));
-		
+	}
+	
+	public void exibirRanking(View view) {
+		Intent intent = new Intent(this, RankingActivity.class);
+		intent.putExtra("email", email);
+		intent.putExtra("resultado", resultado);
+		startActivity(intent);
 	}
 		
 	public void verificarStatus() {
@@ -286,7 +311,7 @@ public class JogoActivity extends Activity {
 		return true;
 	}
 
-	public void mostrar(String mensagem) {
+	public void mostrarMensagem(String mensagem) {
 		Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
 	}
 }

@@ -61,6 +61,15 @@
             android:layout_weight="2"
             android:onClick="validarSenha"
             android:text="Senha" />
+        
+        <Button
+            android:id="@+id/btn_ranking"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_weight="2"
+            android:onClick="exibirRanking"
+            android:text="Ranking" />
 
     </LinearLayout>
 

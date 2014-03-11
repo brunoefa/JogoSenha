@@ -1,6 +1,6 @@
 package com.senai.jogosenha;
 
-public class Jogador {
+public class Jogador implements Comparable<Jogador> {
 
 	private Integer posicao;
 	private String email;
@@ -13,7 +13,7 @@ public class Jogador {
 		this.email = email;
 		this.vitorias = vitorias;
 		this.derrotas = derrotas;
-	}
+	}	
 
 	public Integer getPosicao() {
 		return posicao;
@@ -45,5 +45,10 @@ public class Jogador {
 
 	public void setDerrotas(Integer derrotas) {
 		this.derrotas = derrotas;
+	}
+
+	@Override
+	public int compareTo(Jogador another) {
+		return another.getVitorias().compareTo(this.vitorias);
 	}
 }
