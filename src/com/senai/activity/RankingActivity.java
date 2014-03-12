@@ -1,4 +1,4 @@
-package com.senai.jogosenha;
+package com.senai.activity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,14 +10,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.senai.adapter.AdapterJogadorListView;
+import com.senai.database.JogadorDao;
+import com.senai.entidade.Jogador;
+import com.senai.jogosenha.R;
+
 public class RankingActivity extends Activity {
 
 	private ListView rankingListView;
 	private AdapterJogadorListView adapterJogadorListView;
 	private ArrayList<Jogador> jogadorList;
+	private JogadorDao jogadorDao = JogadorDao.getInstance();
 	
 	private String email;
-	private Boolean resultado;
+	private int vitorias = 0;
+	private int derrotas = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,24 +32,31 @@ public class RankingActivity extends Activity {
 		setContentView(R.layout.activity_ranking);
 		rankingListView = (ListView) findViewById(R.id.lv_ranking);
 		obtemResultado();
+		insereJogador();
 		createListView();
+	}
+
+	private void insereJogador() {
+		Jogador jogador = jogadorDao.buscarPorEmail(email);
+		if (jogador == null) {
+			jogador = new Jogador(email, vitorias, derrotas);
+			jogadorDao.salvar(jogador);
+		}else {
+			jogador.setDerrotas(jogador.getDerrotas() + derrotas);
+			jogador.setVitorias(jogador.getVitorias() + vitorias);
+			jogadorDao.atualizar(jogador);
+		}
 	}
 	
 	public void obtemResultado(){
 		Intent intent = getIntent();
 		email = intent.getStringExtra("email");
-		resultado = intent.getBooleanExtra("resultado", false);
-	}
-	
-	public Jogador preencheJogador() {
-		int vitorias = 0;
-		int derrotas = 0;
+		boolean resultado = intent.getBooleanExtra("resultado", false);
 		if (resultado) {
 			vitorias++;
-		} else {
+		}else {
 			derrotas++;
 		}
-		return new Jogador(0, email, vitorias, derrotas);
 	}
 	
 	public ArrayList<Jogador> ordenaRanking(ArrayList<Jogador> listaJogadores) {
@@ -60,26 +74,12 @@ public class RankingActivity extends Activity {
 	}
 
 	private void createListView() {
-		jogadorList = new ArrayList<Jogador>();
-		
-		Jogador jogadorResultado = preencheJogador();
-		
-		jogadorList.add(jogadorResultado);
-		jogadorList.add(new Jogador(1, "bruno@gmail.com", 10, 5));
-		jogadorList.add(new Jogador(2, "joao@gmail.com", 9, 7));
-		jogadorList.add(new Jogador(3, "maria@gmail.com", 7, 8));
-		jogadorList.add(new Jogador(4, "jose@gmail.com", 5, 2));
-		jogadorList.add(new Jogador(5, "manuel@gmail.com", 3, 6));
-		jogadorList.add(new Jogador(6, "juca@gmail.com", 0, 44));
-		jogadorList.add(new Jogador(7, "geronimo@gmail.com", 0, 233));
-		jogadorList.add(new Jogador(8, "bruno@gmail.com", 10, 5));
-		jogadorList.add(new Jogador(9, "joao@gmail.com", 9, 7));
+		jogadorList = jogadorDao.listarTodos();
 		
 		ArrayList<Jogador> listaOrdenada = ordenaRanking(jogadorList);
 
 		adapterJogadorListView = new AdapterJogadorListView(this, listaOrdenada);
 		rankingListView.setAdapter(adapterJogadorListView);
-
 	}
 
 	@Override

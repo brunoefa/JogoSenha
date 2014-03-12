@@ -1,4 +1,8 @@
-package com.senai.jogosenha;
+package com.senai.activity;
+
+import com.senai.jogosenha.R;
+import com.senai.jogosenha.R.id;
+import com.senai.jogosenha.R.layout;
 
 import android.app.Activity;
 import android.content.Intent;

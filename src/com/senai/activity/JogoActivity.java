@@ -1,8 +1,14 @@
-package com.senai.jogosenha;
+package com.senai.activity;
 
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Vector;
+
+import com.senai.jogosenha.R;
+import com.senai.jogosenha.R.drawable;
+import com.senai.jogosenha.R.id;
+import com.senai.jogosenha.R.layout;
+import com.senai.jogosenha.R.menu;
 
 import android.app.Activity;
 import android.content.Intent;

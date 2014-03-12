@@ -14,20 +14,19 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.senai.jogosenha.JogoActivity"
+            android:name="com.senai.activity.JogoActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.senai.jogosenha.LoginActivity"
+            android:name="com.senai.activity.LoginActivity"
             android:label="@string/title_activity_login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.senai.jogosenha.RankingActivity"
+            android:name="com.senai.activity.RankingActivity"
             android:label="@string/title_activity_ranking" >
         </activity>
     </application>

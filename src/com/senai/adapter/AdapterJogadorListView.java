@@ -1,6 +1,9 @@
-package com.senai.jogosenha;
+package com.senai.adapter;
 
 import java.util.List;
+
+import com.senai.entidade.Jogador;
+import com.senai.jogosenha.R;
 
 import android.content.Context;
 import android.view.LayoutInflater;
