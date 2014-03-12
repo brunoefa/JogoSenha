@@ -6,7 +6,6 @@ import java.util.Collections;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -39,25 +38,25 @@ public class RankingActivity extends Activity {
 		int vitorias = 0;
 		int derrotas = 0;
 		if (resultado) {
-			vitorias = 1;
-		}else {
-			derrotas = 1;
+			vitorias++;
+		} else {
+			derrotas++;
 		}
 		return new Jogador(0, email, vitorias, derrotas);
 	}
 	
 	public ArrayList<Jogador> ordenaRanking(ArrayList<Jogador> listaJogadores) {
-		for (Jogador jogador : listaJogadores) {
-			Log.i("ORDEM", "J: " + jogador.getVitorias());
-		}
-		
-		Log.i("ORDEM", "ORDENANDO ---------------");
+		int posicao = 1; 
+
 		Collections.sort(listaJogadores);
-		
+		ArrayList<Jogador> listaPosicionada = new ArrayList<Jogador>();
+
 		for (Jogador jogador : listaJogadores) {
-			Log.i("ORDEM", "J: " + jogador.getVitorias());
+			jogador.setPosicao(posicao);
+			listaPosicionada.add(jogador);
+			posicao++;
 		}
-		return listaJogadores;
+		return listaPosicionada;
 	}
 
 	private void createListView() {
