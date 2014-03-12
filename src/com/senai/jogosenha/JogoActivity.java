@@ -30,7 +30,7 @@ public class JogoActivity extends Activity {
 	private static final int STATUS_ERRADO 					= R.drawable.icone_errado;
 	private int[] status = { 0, 0, 0, 0 };
 
-	private Boolean resultado = Boolean.FALSE;
+	private Boolean resultado = DERROTA;
 	private String email;
 	private String senha;
 	private Integer linha = 0;
@@ -91,8 +91,8 @@ public class JogoActivity extends Activity {
 		botaoRanking.setVisibility(Button.VISIBLE);
 
 		if (resultado) {
-			mostrarMensagem("Você é demais");
-		}else {
+			mostrarMensagem("Você é demais!");
+		} else {
 			mostrarMensagem("Tente outra vez");
 		}
 		mostrarMensagem("Click em \"Ranking\" para continuar");
