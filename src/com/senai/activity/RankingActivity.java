@@ -102,5 +102,32 @@ public class RankingActivity extends Activity {
 		Intent intent = new Intent(this, LoginActivity.class);
 		startActivity(intent);
 	}
+	
+	
+	
+	public ArrayList<Jogador> ordenaaRanking(ArrayList<Jogador> listaJogadores) {
+		Collections.sort(listaJogadores);
+		
+		ArrayList<Jogador> listaPosicionada = new ArrayList<Jogador>();
+		int posicao = 1;
+		
+		for (Jogador j : listaJogadores) {
+			j.setPosicao(posicao);
+			listaPosicionada.add(j);
+			posicao++;
+		}
+		
+		return listaPosicionada;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

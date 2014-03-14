@@ -2,6 +2,7 @@ package com.senai.entidade;
 
 import java.io.Serializable;
 
+
 public class Jogador implements Comparable<Jogador>, Serializable {
 
 	private static final long serialVersionUID = 1L;
