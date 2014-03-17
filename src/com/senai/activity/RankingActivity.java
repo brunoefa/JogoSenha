@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.senai.adapter.AdapterJogadorListView;
-import com.senai.database.JogadorDao;
+import com.senai.database.JogadorDatabaseDao;
 import com.senai.entidade.Jogador;
 import com.senai.jogosenha.R;
 
@@ -20,7 +20,8 @@ public class RankingActivity extends Activity {
 	private ListView rankingListView;
 	private AdapterJogadorListView adapterJogadorListView;
 	private ArrayList<Jogador> jogadorList;
-	private JogadorDao jogadorDao = JogadorDao.getInstance();
+//	private JogadorMemoryDao jogadorDao = JogadorMemoryDao.getInstance();
+	private JogadorDatabaseDao jogadorDao;
 	
 	private String email;
 	private int vitorias = 0;
@@ -30,6 +31,7 @@ public class RankingActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ranking);
+		jogadorDao = new JogadorDatabaseDao(this);
 		rankingListView = (ListView) findViewById(R.id.lv_ranking);
 		obtemResultado();
 		insereJogador();
@@ -41,7 +43,7 @@ public class RankingActivity extends Activity {
 		if (jogador == null) {
 			jogador = new Jogador(email, vitorias, derrotas);
 			jogadorDao.salvar(jogador);
-		}else {
+		} else {
 			jogador.setDerrotas(jogador.getDerrotas() + derrotas);
 			jogador.setVitorias(jogador.getVitorias() + vitorias);
 			jogadorDao.atualizar(jogador);
@@ -74,7 +76,7 @@ public class RankingActivity extends Activity {
 	}
 
 	private void createListView() {
-		jogadorList = jogadorDao.listarTodos();
+		jogadorList = jogadorDao.buscarTodos();
 		
 		ArrayList<Jogador> listaOrdenada = ordenaRanking(jogadorList);
 
@@ -103,8 +105,6 @@ public class RankingActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	
-	
 	public ArrayList<Jogador> ordenaaRanking(ArrayList<Jogador> listaJogadores) {
 		Collections.sort(listaJogadores);
 		
@@ -119,15 +119,5 @@ public class RankingActivity extends Activity {
 		
 		return listaPosicionada;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

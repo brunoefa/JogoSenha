@@ -2,15 +2,15 @@ package com.senai.adapter;
 
 import java.util.List;
 
-import com.senai.entidade.Jogador;
-import com.senai.jogosenha.R;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.senai.entidade.Jogador;
+import com.senai.jogosenha.R;
 
 public class AdapterJogadorListView extends BaseAdapter {
 	

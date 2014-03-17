@@ -7,7 +7,7 @@ public class Jogador implements Comparable<Jogador>, Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;
+	private Long id;
 	private Integer posicao;
 	private String email;
 	private Integer vitorias;
@@ -20,19 +20,23 @@ public class Jogador implements Comparable<Jogador>, Serializable {
 		this.derrotas = derrotas;
 	}	
 	
-	public Jogador(Integer id, String email, Integer vitorias, Integer derrotas) {
+	public Jogador(Long id, String email, Integer vitorias, Integer derrotas) {
 		super();
 		this.id = id;
 		this.email = email;
 		this.vitorias = vitorias;
 		this.derrotas = derrotas;
+	}
+	
+	public Jogador() {
+		super();
 	}	
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

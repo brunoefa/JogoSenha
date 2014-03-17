@@ -4,12 +4,6 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Vector;
 
-import com.senai.jogosenha.R;
-import com.senai.jogosenha.R.drawable;
-import com.senai.jogosenha.R.id;
-import com.senai.jogosenha.R.layout;
-import com.senai.jogosenha.R.menu;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.senai.jogosenha.R;
 
 public class JogoActivity extends Activity {
 	

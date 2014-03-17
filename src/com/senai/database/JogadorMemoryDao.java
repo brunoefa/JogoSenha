@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.senai.entidade.Jogador;
 
-public class JogadorDao {
+public class JogadorMemoryDao {
 
 	private ArrayList<Jogador> listaJogadores = new ArrayList<Jogador>();
 
@@ -13,16 +13,12 @@ public class JogadorDao {
 //		dao.salvar(new Jogador("joao@gmail.com", 9, 7));
 	}
 
-	private JogadorDao() {}
+	private JogadorMemoryDao() {}
 
-	public ArrayList<Jogador> listarTodos() {
+	public ArrayList<Jogador> buscarTodos() {
 		return listaJogadores;
 	}
 	
-	public void recriarLista(ArrayList<Jogador> listaJogadores) {
-		this.listaJogadores = listaJogadores;
-	}
-
 	public Jogador buscar(Jogador jogador) {
 		for (Jogador j : listaJogadores) {
 			if (j.equals(jogador)) {
@@ -33,7 +29,7 @@ public class JogadorDao {
 	}
 
 	public void salvar(Jogador jogador) {
-		jogador.setId(listaJogadores.size());
+		jogador.setId(Long.valueOf(listaJogadores.size()));
 		listaJogadores.add(jogador);
 	}
 
@@ -66,11 +62,11 @@ public class JogadorDao {
 		return null;
 	}
 
-	private static JogadorDao instance;
+	private static JogadorMemoryDao instance;
 
-	public static JogadorDao getInstance() {
+	public static JogadorMemoryDao getInstance() {
 		if (instance == null) {
-			instance = new JogadorDao();
+			instance = new JogadorMemoryDao();
 		}
 		return instance;
 	}
