@@ -8,11 +8,6 @@ public class JogadorMemoryDao {
 
 	private ArrayList<Jogador> listaJogadores = new ArrayList<Jogador>();
 
-	static {
-//		JogadorDao dao = new JogadorDao();
-//		dao.salvar(new Jogador("joao@gmail.com", 9, 7));
-	}
-
 	private JogadorMemoryDao() {}
 
 	public ArrayList<Jogador> buscarTodos() {

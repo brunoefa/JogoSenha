@@ -17,13 +17,14 @@ public class AppDatabase {
 	public static final String COLUNA_VITORIAS = "vitorias";
 	public static final String COLUNA_DERROTAS = "derrotas";
 	
-	private static final String DATABASE_CREATE = "create table " + TABELA_JOGADOR + "( " 
+	private static final String TABLE_CREATE = "create table " + TABELA_JOGADOR + "( " 
 			+ COLUNA_ID    	  + " integer primary key autoincrement, " 
 			+ COLUNA_EMAIL 	  + " text not null, "
 			+ COLUNA_VITORIAS + " integer not null, "
 			+ COLUNA_DERROTAS + " integer not null "
 			+ ");";
 
+	
 	private SQLiteDatabase database;
 	private DatabaseHelper dbHelper;
 
@@ -48,12 +49,13 @@ public class AppDatabase {
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-			db.execSQL(DATABASE_CREATE);
+			db.execSQL(TABLE_CREATE);
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			Log.w("APP DATABASE", "Atualizando banco de dados da versão " + oldVersion + " para versão " + newVersion + ". Todos os dados serão perdidos");
+			Log.w("APP DATABASE", "Atualizando banco de dados da versão " + oldVersion + 
+					" para versão " + newVersion + ". Todos os dados serão perdidos");
 			db.execSQL("DROP TABLE IF EXISTS " + TABELA_JOGADOR);
 			onCreate(db);
 		}
